@@ -3,6 +3,7 @@ import axios from 'axios';
 
 const initialState = {
   userList: [],
+  total_pages: null,
 };
 
 
@@ -12,6 +13,9 @@ const slice = createSlice({
   reducers: {
     setUserList(state, action) {
       state.userList = action.payload
+    },
+    setTotalPage(state, action){
+      state.total_pages = action.payload
     }
   },
 });
@@ -24,6 +28,7 @@ export function fetchUsers(page) {
     await axios.get(`https://reqres.in/api/users?page=${page}&per_page=5`)
       .then(response => {
         console.log(response, "llllllllllllll")
+        dispatch(slice.actions.setTotalPage(response.data.total_pages))
         dispatch(slice.actions.setUserList(response.data.data));
       })
       .catch(error => {

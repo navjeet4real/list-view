@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Typography, Stack, Box, Button } from "@mui/material";
+import { Typography, Stack, Box, Button, Pagination  } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUsers } from "../redux/slices/app";
 import UserList from "../component/UserList";
 
-
 const Home = () => {
   const [page, setPage] = useState(1)
   const dispatch = useDispatch();
-  const { userList } = useSelector((state) => state.app);
+  const { userList, total_pages } = useSelector((state) => state.app);
   useEffect(() => {
-    console.log(page, "page noooooooo")
     dispatch(fetchUsers(page))
   }, [page])
 
@@ -49,10 +47,10 @@ const Home = () => {
           </Stack>
         </Box>
         <Stack direction={'row'} justifyContent="space-between" sx={{ maxWidth: 700, width: "100%" }} >
-          <Button variant="outlined" color="inherit" onClick={() => setPage(page - 1)} sx={{ boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)' }} >
+          <Button variant="outlined" color="inherit" disabled={page === 1} onClick={() => setPage(page - 1)} sx={{ boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)' }} >
             Previous
           </Button>
-          <Button variant="outlined" color="inherit" onClick={() => setPage(page + 1)} sx={{ boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)' }} >
+          <Button variant="outlined" color="inherit" disabled={page === total_pages} onClick={() => setPage(page + 1)} sx={{ boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)' }} >
             Next
           </Button>
         </Stack>
