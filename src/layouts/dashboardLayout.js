@@ -6,7 +6,7 @@ import Header from "../component/Header";
 const DashboardLayout = () => {
   return (
     <>
-      <Stack alignItems={"center"}>
+      <Stack alignItems={"center"} >
         <Header />
         <Outlet />
       </Stack>

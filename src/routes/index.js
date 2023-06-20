@@ -21,6 +21,8 @@ export default function Router() {
       children: [
         { element: <Navigate to={DEFAULT_PATH} replace />, index: true },
         { path: "home", element: <HomePage /> },
+        { path: "details/:id", element: <DetailsPage /> },
+
 
         { path: "404", element: <Page404 /> },
         { path: "*", element: <Navigate to="/404" replace /> },
@@ -31,5 +33,5 @@ export default function Router() {
 }
 
 const HomePage = Loadable(lazy(() => import("../pages/Home")));
-
+const DetailsPage = Loadable(lazy(() => import("../pages/DetailsPage")))
 const Page404 = Loadable(lazy(() => import("../pages/Page404")));
