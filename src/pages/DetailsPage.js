@@ -1,7 +1,8 @@
-import { Avatar, Box, Button, Stack, Typography } from '@mui/material'
+import { Avatar, Box, Button, IconButton, Stack, Typography, Grid } from '@mui/material'
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
+import { ArrowBack } from "@mui/icons-material";
 
 const DetailsPage = () => {
   const { id } = useParams()
@@ -11,33 +12,52 @@ const DetailsPage = () => {
   console.log(user, "user details")
   return (
     <>
-      <Box sx={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center" }}>
-        <Stack alignItems={'start'}>
-          <Button variant="outlined" color="inherit" onClick={() => {
-            navigate("/home")
-          }}>Back</Button>
-        </Stack>
-        <Box
-          sx={{
-            width: "100%",
-            maxWidth: 700,
-            boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
-            padding: '16px',
-            height: 500,
-            borderRadius: '4px',
-            backgroundColor: '#fff',
-            marginBottom: '16px'
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          height: "80vh",
+          width: "100%",
+          maxWidth: 800,
+          marginLeft: "auto",
+          marginRight: "auto",
+        }}
+      >
+        <Stack
+          spacing={3}
+          direction={"row"}
+          justifyContent="left"
+          alignItems={"center"}
+          sx={{ position: "absolute", top: "18vh", left: "18vh", zIndex: 1 }}
+        >
+          <IconButton onClick={() => {
+            navigate('/home')
           }}>
-
-          <Stack direction="column" spacing={2} alignItems="center" justifyContent={'space-between'}>
-            <Avatar sx={{ width: 124, height: 124 }} src={user.avatar} alt="Avatar" />
-            <Typography variant="h5">{`${user.first_name} ${user.last_name}`}</Typography>
-            <Typography variant="body1">{user.email}</Typography>
-          </Stack>
-
-        </Box>
+            <ArrowBack />
+          </IconButton>
+          <Typography variant="h6">Home</Typography>
+        </Stack>
+        <Grid container alignItems="center" sx={{
+          boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
+          backgroundColor: "#ffffff",
+          padding: 4,
+          borderRadius: 4,
+        }}>
+          <Grid item xs={12} sm={3}  >
+            <Avatar alt={user.username} src={user.avatar} sx={{ width: 120, height: 120 }} />
+          </Grid>
+          <Grid item xs={12} sm={9} >
+            <Typography variant="h4" gutterBottom>
+              {user.first_name}
+            </Typography>
+            <Typography variant="body1" color="textSecondary">
+              {user.email}
+            </Typography>
+          </Grid>
+        </Grid>
       </Box>
-
     </>
   )
 }
