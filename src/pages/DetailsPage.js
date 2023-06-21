@@ -12,6 +12,19 @@ const DetailsPage = () => {
   console.log(user, "user details")
   return (
     <>
+    <IconButton
+        onClick={() => {
+          navigate("/home");
+        }}
+        sx={{
+          position: 'fixed',
+          left: '9%',
+          top: '20%'
+        }}
+      >
+        <ArrowBack />
+        <Typography variant='h6'>Home</Typography>
+      </IconButton>
       <Box
         sx={{
           display: "flex",
@@ -19,26 +32,10 @@ const DetailsPage = () => {
           alignItems: "center",
           justifyContent: "center",
           height: "80vh",
-          width: "100%",
-          maxWidth: 800,
-          marginLeft: "auto",
-          marginRight: "auto",
+          minWidth: "80vw",
+          p: 2,
         }}
       >
-        <Stack
-          spacing={3}
-          direction={"row"}
-          justifyContent="left"
-          alignItems={"center"}
-          sx={{ position: "absolute", top: "18vh", left: "18vh", zIndex: 1 }}
-        >
-          <IconButton onClick={() => {
-            navigate('/home')
-          }}>
-            <ArrowBack />
-          </IconButton>
-          <Typography variant="h6">Home</Typography>
-        </Stack>
         <Grid container alignItems="center" sx={{
           boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
           backgroundColor: "#ffffff",

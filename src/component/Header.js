@@ -12,7 +12,7 @@ const Header = () => {
           width: "100%",
           backgroundColor: "#4C93CE",
           boxShadow: "0px 0px 0px rgba(0, 0, 0, 0.25)",
-          height: "100px",
+          height: "15vh",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
