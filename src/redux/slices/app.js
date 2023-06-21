@@ -27,7 +27,6 @@ export function fetchUsers(page) {
   return async (dispatch, getState) => {
     await axios.get(`https://reqres.in/api/users?page=${page}&per_page=5`)
       .then(response => {
-        console.log(response, "llllllllllllll")
         dispatch(slice.actions.setTotalPage(response.data.total_pages))
         dispatch(slice.actions.setUserList(response.data.data));
       })

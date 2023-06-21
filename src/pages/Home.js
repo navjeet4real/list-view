@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Typography, Stack, Box, Button, Pagination } from "@mui/material";
+import { Typography, Stack, Box, Button } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUsers } from "../redux/slices/app";
 import UserList from "../component/UserList";

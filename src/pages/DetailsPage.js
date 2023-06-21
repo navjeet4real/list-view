@@ -1,4 +1,4 @@
-import { Avatar, Box, Button, IconButton, Stack, Typography, Grid } from '@mui/material'
+import { Avatar, Box, IconButton, Typography, Grid } from '@mui/material'
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
@@ -9,7 +9,6 @@ const DetailsPage = () => {
   const navigate = useNavigate()
   const { userList } = useSelector((state) => state.app)
   const user = userList.find(item => item.id == id)
-  console.log(user, "user details")
   return (
     <>
     <IconButton
